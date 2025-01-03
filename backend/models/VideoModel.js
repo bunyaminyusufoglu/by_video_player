@@ -6,18 +6,18 @@ const VideoSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    description:{
-        type: String,
-        trim: true
-    },
-    videoUrl:{
+    description: {
         type: String,
         trim: true,
-        required: true
     },
-    filename:{
+    videoUrl: {
         type: String,
-        trim: true
+        trim: true,
+        required: true,
+    },
+    filename: {
+        type: String,
+        trim: true,
     }
 }, {timestamps: true})
 

@@ -1,27 +1,25 @@
 const VideoSchema = require('../models/VideoModel');
 
-exports.addVideo = async (req, res) => {
+exports.addVideo =  async (req, res) => {
     const {title, description} = req.body;
     const videoPath = req.file.path;
 
-    const video = new VideoSchema ({
+    const video = new VideoSchema({
         title,
         description,
         filename: req.file.filename,
         videoUrl: videoPath
     })
 
-    console.log(video)
-
-    try{
+    try {
         await video.save();
         res.status(200).json({
             message: 'Video Uploaded Succesfully',
             video
         })
-    }catch (error){
+    } catch (error) {
         res.status(400).json({
-            message: 'Video Upload Failed',
+            message: 'Video upload failed',
             error
         })
     }
@@ -33,7 +31,7 @@ exports.getAllVideos = async (req, res) => {
         res.status(200).json({
             videos
         })
-    }catch (error) {
+    } catch (error) {
         res.status(400).json({
             message: 'Videos fetch failed',
             error
